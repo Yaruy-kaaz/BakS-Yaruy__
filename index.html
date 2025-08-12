@@ -4,9 +4,23 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Реліз треку 'На район' від Bak$ feat Ярий. Слухайте на Apple Music, YouTube, Spotify та YouTube Music." />
+
+<!-- Open Graph / Facebook -->
 <meta property="og:title" content="На район — Bak$ feat Ярий" />
 <meta property="og:description" content="Офіційний реліз треку. Слухайте на улюблених платформах." />
 <meta property="og:image" content="IMG_3834.png" />
+<meta property="og:type" content="music.song" />
+<meta property="og:site_name" content="Bak$ feat Ярий" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="1200" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="На район — Bak$ feat Ярий" />
+<meta name="twitter:description" content="Офіційний реліз треку. Слухайте на улюблених платформах." />
+<meta name="twitter:image" content="IMG_3834.png" />
+
 <meta name="theme-color" content="#222" />
 <title>На район — Bak$ feat Ярий</title>
 
@@ -23,6 +37,7 @@
     background: transparent;
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* плавный скролл на iOS */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -33,11 +48,19 @@
 
   body::before {
     content: "";
-    position: fixed;
-    inset: 0;
+    position: absolute; /* заменено с fixed */
+    top: 0; left: 0; right: 0; bottom: 0;
     background: url('IMG_3834.png') center/cover no-repeat;
-    filter: blur(15px) brightness(1.2) saturate(1.1);
+    filter: blur(12px) brightness(1.15) saturate(1.1);
     z-index: -2;
+    will-change: transform; /* улучшение производительности */
+  }
+
+  /* Instagram и Safari упрощение фильтра */
+  @supports (-webkit-touch-callout: none) {
+    body::before {
+      filter: blur(8px) brightness(1.1);
+    }
   }
 
   body::after {
@@ -80,7 +103,6 @@
     position: relative;
   }
 
-  /* Гранж-стиль с анимацией молний, без полосатого фона */
   section.info h1 {
     font-size: 2.6rem;
     margin-bottom: 8px;
@@ -101,7 +123,7 @@
 
   section.info h1::before,
   section.info h1::after {
-    content: none; /* убираем полосатый фон */
+    content: none;
   }
 
   @keyframes lightningStrike {
@@ -156,7 +178,6 @@
     flex-shrink: 0;
   }
 
-  /* Анимация появления кнопок */
   a.button {
     display: flex;
     align-items: center;
@@ -193,7 +214,6 @@
     text-align: center;
   }
 
-  /* При наведении - увеличение и тень */
   a.button:hover, a.button:focus {
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0,0,0,0.6);
